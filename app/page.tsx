@@ -1,6 +1,21 @@
 'use client';
 import { useState, useEffect } from 'react';
 
+import Autocomplete from '@/components/google-map/autocomplete';
+
+export default YourAwesomeComponent() {
+  retun (
+    <Autocomplete
+      apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}
+      onPlaceSelect={handlePlaceSelect}
+      mapClassName="rounded-lg"
+      spinnerClassName="grid h-full w-full place-content-center"
+      className="relative h-[500px] w-full flex-grow rounded-lg bg-gray-50"
+      hideInput={true}
+    />
+  )
+}
+
 export default function Home() {
   const [lang, setLang] = useState<'tr' | 'en' | 'nl'>('tr');
   const [isOpen, setIsOpen] = useState(false);
@@ -369,30 +384,6 @@ export default function Home() {
             </div>
           </div>
         )}
-<div className="w-full max-w-md mt-8 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative h-32 group">
-  {/* Harita Arka Planı (CSS ile karartılmış iframe veya görsel) */}
-  <div className="absolute inset-0 bg-slate-800 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
-  
-  {/* Radar Ping */}
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-    <span className="relative flex h-4 w-4">
-      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A880] opacity-75"></span>
-      <span className="relative inline-flex rounded-full h-4 w-4 bg-[#C5A880] shadow-[0_0_10px_#C5A880]"></span>
-    </span>
-  </div>
-
-  {/* Alt Bilgi Paneli */}
-  <div className="absolute bottom-0 w-full bg-slate-900/90 backdrop-blur-md border-t border-white/5 p-3 flex justify-between items-center translate-y-1 group-hover:translate-y-0 transition-transform">
-    <div>
-      <p className="text-[10px] text-slate-400 font-mono tracking-widest">NAV // ACTIVE</p>
-      <p className="text-slate-200 text-sm font-medium">Rhoneweg 12-14, Amsterdam</p>
-    </div>
-    <a href="..." target="_blank" className="bg-transparent border border-[#C5A880] text-[#C5A880] hover:bg-[#C5A880] hover:text-slate-900 text-xs px-3 py-1.5 rounded transition-colors flex items-center gap-2">
-      <span>GİT</span>
-      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-    </a>
-  </div>
-</div>
         {/* 4. KISIM: İRTİBAT & DÜZELTME POP-UP */}
         {isContactOpen && (
           <div className="fixed inset-0 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity">
