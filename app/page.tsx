@@ -28,7 +28,7 @@ export default function Home() {
       whatsappMsg: "Merhaba,%20davetiye%20yanıtımı%20güncellemek/doğrulamak%20istiyorum.",
       address: "Rhoneweg 12-14, 1043 AH Amsterdam",
       locationTitle: "Etkinlik Adresi",
-      mapBtn: "Haritada Aç"
+      mapBtn: "Haritayı Aç"
     },
     en: {
       noteStart: "Please use the ",
@@ -51,7 +51,7 @@ export default function Home() {
       whatsappMsg: "Hello,%20I%20would%20like%20to%20update/verify%20my%20RSVP.",
       address: "Rhoneweg 12-14, 1043 AH Amsterdam",
       locationTitle: "Event Location",
-      mapBtn: "Open in Maps"
+      mapBtn: "Open Map"
     },
     nl: {
       noteStart: "Gebruik alstublieft de ",
@@ -74,7 +74,7 @@ export default function Home() {
       whatsappMsg: "Hallo,%20ik%20wil%20graag%20mijn%20RSVP%20bijwerken/verifiëren.",
       address: "Rhoneweg 12-14, 1043 AH Amsterdam",
       locationTitle: "Locatie Evenement",
-      mapBtn: "Open in Maps"
+      mapBtn: "Open Kaart"
     }
   };
 
@@ -254,45 +254,75 @@ export default function Home() {
         </div>
 
         {/* ==================================================== */}
-        {/* YENİ VE DÜZELTİLMİŞ LOKASYON WIDGET'I                */}
+        {/* YENİ: MODERN, HIGH-TECH & ZARİF HARİTA PREVIEW WIDGET */}
         {/* ==================================================== */}
-        <div className="mt-8 w-full max-w-md flex flex-col items-center p-6 bg-slate-800 border border-[#C5A880]/30 rounded-xl shadow-lg relative">
+        <div className="mt-8 w-full max-w-md relative group">
+          {/* Arkada ince bir glow (parlama) efekti */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#C5A880]/20 to-[#9E7B4F]/20 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000"></div>
           
-          {/* Harita İkonu */}
-          <div className="mb-3 text-[#C5A880]">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          
-          {/* Başlık ve Adres */}
-          <h3 className="elegant-font text-xl md:text-2xl text-[#C5A880] mb-2 text-center tracking-wide">
-            {t[lang].locationTitle}
-          </h3>
-          
-          {/* break-words ve w-full ile taşma engellendi */}
-          <p className="text-slate-300 text-sm md:text-base text-center mb-6 w-full break-words px-2">
-            {t[lang].address}
-          </p>
+          <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 p-2 rounded-2xl shadow-2xl flex flex-col">
+            
+            {/* Widget Başlığı ve Teknoloji Hissi Veren "GPS" Tag'i */}
+            <div className="flex items-center justify-between px-4 py-3">
+              <div className="flex items-center gap-2.5">
+                {/* Ping Animasyonlu Nokta */}
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A880] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C5A880]"></span>
+                </span>
+                <h3 className="elegant-font text-lg md:text-xl text-[#C5A880] tracking-wide m-0 leading-none">
+                  {t[lang].locationTitle}
+                </h3>
+              </div>
+              <span className="text-[10px] text-slate-400 tracking-[0.2em] font-mono bg-slate-800/80 px-2 py-1 rounded border border-white/5 shadow-inner">
+                GPS // ACTIVE
+              </span>
+            </div>
 
-          {/* Aksiyon Butonu - Renk kontrastı düzeltildi, mobilde tam genişlik */}
-          <a 
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Rhoneweg 12-14, 1043 AH Amsterdam")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto flex items-center justify-center px-8 py-3 bg-[#C5A880] text-slate-900 text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-[#b0946c] transition-colors duration-300 shadow-md"
-          >
-            <span>{t[lang].mapBtn}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+            {/* Önizleme (Preview) Alanı */}
+            <div className="relative h-40 sm:h-44 w-full rounded-xl overflow-hidden bg-slate-800 border border-white/5">
+              
+              {/* Harita Iframe - CSS Filtre ile Dark/Tech Moda Çevrildi */}
+              {/* Pointer-events-none ile scroll sorunu engellendi, sadece görüntü amaçlı kullanılıyor */}
+              <iframe 
+                src="https://maps.google.com/maps?q=Rhoneweg%2012-14,%201043%20AH%20Amsterdam&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+                style={{ filter: 'invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%)' }}
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+              
+              {/* Alttan Gelen Gradient (Yazıyı Okunur Kılmak İçin) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none opacity-90"></div>
+
+              {/* Alt Bilgi Barı: Adres ve Aksiyon Butonu */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 flex items-end justify-between gap-3 pointer-events-auto">
+                <div className="flex-1 min-w-0">
+                  <p className="text-slate-200 text-sm font-light drop-shadow-md truncate">
+                    {t[lang].address}
+                  </p>
+                </div>
+                
+                {/* İnovatif ve Minimal Buton */}
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Rhoneweg 12-14, 1043 AH Amsterdam")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] text-slate-900 text-[11px] sm:text-xs font-bold tracking-widest uppercase rounded-lg hover:shadow-[0_0_15px_rgba(197,168,128,0.5)] transition-all duration-300 transform hover:scale-105"
+                >
+                  <span>{t[lang].mapBtn}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         {/* ==================================================== */}
 
         {/* İLETİŞİM LİNKİ - ALT KISIM */}
-        <div className="mt-10 text-center max-w-md px-4">
+        <div className="mt-8 text-center max-w-md px-4">
           <button 
             onClick={() => setIsContactOpen(true)}
             className="text-slate-400 hover:text-[#C5A880] text-sm underline-offset-4 hover:underline transition-colors duration-300"
