@@ -369,7 +369,26 @@ export default function Home() {
             </div>
           </div>
         )}
-
+<div className="w-full max-w-md mt-8 flex flex-col items-center">
+  <div className="inline-flex items-center gap-3 bg-slate-800/50 border border-slate-700/50 p-1.5 rounded-full backdrop-blur-sm">
+    <div className="pl-4 pr-2 py-1 flex items-center gap-2 border-r border-slate-700">
+      <svg className="w-4 h-4 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      </svg>
+      <span className="text-slate-300 text-sm font-medium tracking-wide">Rhoneweg 12-14, Amsterdam</span>
+    </div>
+    <div className="flex gap-1 pr-1">
+      {/* Kopyala İkonu */}
+      <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-full transition-colors" title="Adresi Kopyala">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+      </button>
+      {/* Haritaya Git İkonu */}
+      <a href="..." target="_blank" className="p-2 bg-[#C5A880] text-slate-900 hover:scale-105 rounded-full transition-transform shadow-lg" title="Haritada Aç">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+      </a>
+    </div>
+  </div>
+</div>
         {/* 4. KISIM: İRTİBAT & DÜZELTME POP-UP */}
         {isContactOpen && (
           <div className="fixed inset-0 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity">
@@ -395,27 +414,6 @@ export default function Home() {
                     className="w-full h-auto opacity-[0.04] rotate-12 scale-125 mix-blend-multiply"
                   />
                 </div>
-
-                <div className="w-full max-w-md mt-8 flex flex-col items-center">
-  <div className="inline-flex items-center gap-3 bg-slate-800/50 border border-slate-700/50 p-1.5 rounded-full backdrop-blur-sm">
-    <div className="pl-4 pr-2 py-1 flex items-center gap-2 border-r border-slate-700">
-      <svg className="w-4 h-4 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      </svg>
-      <span className="text-slate-300 text-sm font-medium tracking-wide">Rhoneweg 12-14, Amsterdam</span>
-    </div>
-    <div className="flex gap-1 pr-1">
-      {/* Kopyala İkonu */}
-      <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-full transition-colors" title="Adresi Kopyala">
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-      </button>
-      {/* Haritaya Git İkonu */}
-      <a href="..." target="_blank" className="p-2 bg-[#C5A880] text-slate-900 hover:scale-105 rounded-full transition-transform shadow-lg" title="Haritada Aç">
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-      </a>
-    </div>
-  </div>
-</div>
 
                 <div className="relative z-10 flex flex-col w-full text-center space-y-6">
                   <h3 className="text-2xl font-bold text-slate-800 italic pb-3 border-b border-[#C5A880]/30">
