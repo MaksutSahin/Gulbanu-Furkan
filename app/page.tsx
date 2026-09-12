@@ -9,7 +9,7 @@ export default function Home() {
   const t = {
     tr: {
       noteStart: "Katılım için lütfen davetiyenin sol tarafındaki ",
-      noteButton: "DAVETİ YANITLA", // Köşeli parantezler kaldırıldı, çünkü artık gerçek bir buton
+      noteButton: "DAVETİ YANITLA", 
       noteEnd: " butonunu kullanınız.",
       contactLink: "Sorularınız veya katılım durumunuzu doğrulamak için buradan bize ulaşabilirsiniz.",
       formTitle: "Kıymetli Misafirimiz,",
@@ -26,7 +26,9 @@ export default function Home() {
       contactDesc: "Yanıtınızı güncellemek, katılım durumunuzu doğrulamak veya sorularınız için doğrudan bizimle iletişime geçebilirsiniz.",
       whatsappBtn: "WhatsApp İle İletişime Geç",
       whatsappMsg: "Merhaba,%20davetiye%20yanıtımı%20güncellemek/doğrulamak%20istiyorum.",
-      address: "Rhoneweg 12-14, 1043 AH Amsterdam"
+      address: "Rhoneweg 12-14, 1043 AH Amsterdam",
+      locationTitle: "Etkinlik Adresi",
+      mapBtn: "Haritada Aç"
     },
     en: {
       noteStart: "Please use the ",
@@ -47,7 +49,9 @@ export default function Home() {
       contactDesc: "You can reach out to us directly to update your response, verify details, or ask any questions.",
       whatsappBtn: "Contact via WhatsApp",
       whatsappMsg: "Hello,%20I%20would%20like%20to%20update/verify%20my%20RSVP.",
-      address: "Rhoneweg 12-14, 1043 AH Amsterdam"
+      address: "Rhoneweg 12-14, 1043 AH Amsterdam",
+      locationTitle: "Event Location",
+      mapBtn: "Open in Maps"
     },
     nl: {
       noteStart: "Gebruik alstublieft de ",
@@ -68,7 +72,9 @@ export default function Home() {
       contactDesc: "U kunt rechtstreeks contact met ons opnemen om uw reactie bij te werken, details te verifiëren of vragen te stellen.",
       whatsappBtn: "Contact via WhatsApp",
       whatsappMsg: "Hallo,%20ik%20wil%20graag%20mijn%20RSVP%20bijwerken/verifiëren.",
-      address: "Rhoneweg 12-14, 1043 AH Amsterdam"
+      address: "Rhoneweg 12-14, 1043 AH Amsterdam",
+      locationTitle: "Locatie Evenement",
+      mapBtn: "Open in Maps"
     }
   };
 
@@ -165,7 +171,7 @@ export default function Home() {
         }
       `}} />
 
-      {/* DİL SEÇİCİ - PROFESYONEL VE MODERN TASARIM */}
+      {/* DİL SEÇİCİ */}
       <div className="fixed top-6 right-4 sm:right-8 z-50 flex items-center bg-[#1e293b]/70 backdrop-blur-md rounded-full p-1.5 border border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
         {['tr', 'en', 'nl'].map((l) => (
           <button
@@ -185,10 +191,10 @@ export default function Home() {
         ))}
       </div>
 
-      <main className="min-h-screen w-full bg-slate-900 flex flex-col items-center justify-center p-2 sm:p-4 py-8 relative">
+      <main className="min-h-screen w-full bg-slate-900 flex flex-col items-center justify-center p-4 py-12 relative overflow-x-hidden">
         
         {/* ÜST KISIM: KUSURSUZ HİZALANMIŞ İÇ İÇE BUTON ALANI */}
-        <div className="text-center elegant-font max-w-2xl px-4 mb-6 mt-20 sm:mt-4">
+        <div className="text-center elegant-font max-w-2xl px-4 mb-6 mt-16 sm:mt-4">
           <p className="text-slate-300 text-lg md:text-xl italic tracking-wide leading-[2.8] inline-block">
             {t[lang].noteStart}
             
@@ -197,7 +203,6 @@ export default function Home() {
               title={lang === 'tr' ? "LCV Formunu Aç" : "Open RSVP Form"}
               className="group relative inline-flex items-center justify-center align-middle mx-1.5 px-3 py-1 bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white font-bold rounded-lg border border-white/20 shadow-[0_2px_10px_rgba(157,123,79,0.3)] hover:shadow-[0_4px_15px_rgba(157,123,79,0.5)] transition-all duration-300 whitespace-nowrap not-italic text-sm md:text-base cursor-pointer"
             >
-              {/* Estetik SVG El İkonu */}
               <span className="inline-flex items-center animate-point-x mr-1.5">
                 <svg viewBox="0 0 24 24" fill="gold" className="w-4 h-4 transform rotate-90 drop-shadow-sm">
                   <path d="M13 22H9c-1.4 0-2.7-.6-3.6-1.6l-4.4-4.7.9-.9c.3-.3.8-.4 1.2-.2l2.9 1.5V6c0-1.1.9-2 2-2s2 .9 2 2v7.2l1.6-1c.5-.3 1.1-.3 1.6.1l4.8 3.6c.6.4 1 1 1 1.7V20c0 1.1-.9 2-2 2z"/>
@@ -210,9 +215,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 1. KISIM: DAVETİYE GÖRSELİ VE HAYALET BUTON */}{/* 1. KISIM: DAVETİYE GÖRSELİ, HAYALET BUTON VE İŞARET EDEN EL İKONU */}
+        {/* 1. KISIM: DAVETİYE GÖRSELİ */}
         <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-slate-800">
-          
           <img
             key={lang} 
             src={lang === 'tr' ? "/davetiye-arkaplan.png" : (lang === 'nl' ? "/davetiye-arkaplan-nl.png" : "/davetiye-arkaplan-en.png")}
@@ -220,14 +224,13 @@ export default function Home() {
             className="w-full h-auto block animate-in fade-in duration-700"
           />
 
-          {/* DAVETİYE ÜZERİNDEKİ İKON: Butonun tam soluna, yüzdelik oranlarla hizalandı */}
           <div 
             className="absolute z-40 flex items-center justify-end pr-1 pointer-events-none"
             style={{
               left: '0%', 
-              top: '39.1%', // Butonla aynı yükseklikte başlar
-              width: '11.5%', // Butonun başladığı yere kadar olan mesafeyi kaplar
-              height: '5.7%'  // Butonla aynı boyda olup dikeyde tam ortalar
+              top: '39.1%', 
+              width: '11.5%', 
+              height: '5.7%'  
             }}
           >
             <span className="animate-point-x text-[#C5A780] drop-shadow-[0_2px_5px_rgba(0,0,0,0.7)] flex-shrink-0">
@@ -244,7 +247,6 @@ export default function Home() {
             </span>
           </div>
 
-          {/* TIKLANABİLİR GÖRÜNMEZ HAYALET BUTON (TAM OVAL - rounded-full) */}
           <button
             onClick={() => setIsOpen(true)}
             className="animate-soft-glow rounded-full transition-all"
@@ -259,168 +261,155 @@ export default function Home() {
               zIndex: 30,
               cursor: 'pointer'
             }}
-            title={lang === 'tr' ? "LCV Formunu Aç" : "Open RSVP Form"}
-            aria-label={lang === 'tr' ? "LCV Formunu Aç" : "Open RSVP Form"}
-          />
+            aria-label="RSVP Form"
+          ></button>
         </div>
-        
 
-        {/* 2. KISIM: RESMİN ALTINDAKİ YALIN YAZI */}
-        <div className="mt-8 text-center elegant-font max-w-md px-4">
-          <p 
+        {/* ==================================================== */}
+        {/* YENİ EKLENEN KISIM: ADRES VE LOKASYON WIDGET'I */}
+        {/* ==================================================== */}
+        <div className="mt-12 w-full max-w-md flex flex-col items-center p-8 bg-slate-800/60 backdrop-blur-md rounded-2xl border border-[#C5A880]/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative overflow-hidden transition-all duration-500 hover:border-[#C5A880]/40 hover:bg-slate-800/80 group">
+          
+          {/* İnce dekoratif üst çizgi */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent opacity-60"></div>
+          
+          {/* İkon */}
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-900 border border-[#C5A880]/30 mb-4 shadow-inner group-hover:scale-110 transition-transform duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          
+          {/* Başlık */}
+          <h3 className="elegant-font text-2xl text-[#C5A880] tracking-wide mb-3">
+            {t[lang].locationTitle}
+          </h3>
+          
+          {/* Adres Metni */}
+          <p className="text-slate-300 text-center text-base leading-relaxed mb-6">
+            {t[lang].address}
+          </p>
+
+          {/* Aksiyon Butonu */}
+          <a 
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Rhoneweg 12-14, 1043 AH Amsterdam")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center px-6 py-2.5 bg-transparent text-[#C5A880] text-sm font-medium tracking-widest uppercase border border-[#C5A880] rounded-full hover:bg-[#C5A880] hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(197,168,128,0.1)] hover:shadow-[0_0_20px_rgba(197,168,128,0.3)]"
+          >
+            <span className="mr-2">{t[lang].mapBtn}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+        {/* ==================================================== */}
+
+        {/* İLETİŞİM LİNKİ - ALT KISIM */}
+        <div className="mt-10 text-center max-w-md px-4">
+          <button 
             onClick={() => setIsContactOpen(true)}
-            className="text-slate-300 hover:text-white text-lg md:text-xl tracking-wide cursor-pointer underline underline-offset-4 decoration-[#C5A880]/60 hover:decoration-white transition-all italic"
+            className="text-slate-400 hover:text-[#C5A880] text-sm underline-offset-4 hover:underline transition-colors duration-300"
           >
             {t[lang].contactLink}
-          </p>
+          </button>
         </div>
-
-        {/* 3. KISIM: LCV FORM POP-UP */}
-        {isOpen && (
-          <div className="fixed inset-0 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity">
-            
-            <div className="relative w-full max-w-sm">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="absolute -top-4 -right-4 z-50 w-11 h-11 flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] text-white hover:from-[#B0936C] hover:to-[#89683F] font-bold text-lg border-2 border-[#FDFBF7] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all transform hover:scale-110"
-              >
-                ✕
-              </button>
-
-              <div className="w-full max-h-[95vh] overflow-y-auto relative flex flex-col animate-rose-bloom elegant-font bg-[#FDFBF7] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-[5px] border-[#C5A880] rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl p-8 pt-10">
-                
-                <div className="absolute inset-0 z-30 pointer-events-none overflow-hidden rounded-tl-[3rem] rounded-br-[3rem]">
-                  <div className="absolute -inset-full top-0 block w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-sparkle" />
-                </div>
-
-                <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                  <img 
-                    src="https://www.svgrepo.com/show/308892/rose-flower-nature-floral.svg" 
-                    alt="Rose Background" 
-                    className="w-full h-auto opacity-[0.04] rotate-12 scale-125 mix-blend-multiply"
-                  />
-                </div>
-
-                <div className="relative z-10 flex flex-col w-full h-full">
-                  <div className="text-center mb-6 pb-4 border-b border-[#C5A880]/30">
-                    <p className="text-lg text-slate-700 italic tracking-wide">
-                      {t[lang].address}
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
-                    
-                    <div className="flex flex-col">
-                      <label className="block text-xl font-bold text-slate-800 mb-2 italic">{t[lang].formTitle}</label>
-                      <input 
-                        type="text" 
-                        required 
-                        placeholder={t[lang].namePlaceholder}
-                        className="w-full p-4 rounded-xl border-2 border-[#C5A880]/40 focus:outline-none focus:border-[#9E7B4F] focus:ring-2 focus:ring-[#9E7B4F]/20 text-slate-800 bg-white/95 backdrop-blur-sm text-lg transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] placeholder:text-slate-400 placeholder:italic" 
-                        value={formData.name} 
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col">
-                      <label className="block text-xl font-bold text-slate-800 mb-2 italic">{t[lang].attendanceLabel}</label>
-                      <select 
-                        className="w-full p-4 rounded-xl border-2 border-[#C5A880]/40 focus:outline-none focus:border-[#9E7B4F] focus:ring-2 focus:ring-[#9E7B4F]/20 text-slate-800 bg-white/95 backdrop-blur-sm text-[16px] transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] cursor-pointer" 
-                        value={formData.attending} 
-                        onChange={(e) => setFormData({ ...formData, attending: e.target.value })}
-                      >
-                        <option value={t[lang].attendingYes}>{t[lang].attendingYes}</option>
-                        <option value={t[lang].attendingNo}>{t[lang].attendingNo}</option>
-                      </select>
-                    </div>
-                    
-                    {isAttending && (
-                      <div className="flex flex-col items-center animate-in fade-in duration-300 pb-6">
-                        <label className="block text-xl font-bold text-slate-800 mb-2 italic text-center w-full">{t[lang].guestCountLabel}</label>
-                        <select 
-                          className="w-1/2 p-4 rounded-xl border-2 border-[#C5A880]/40 focus:outline-none focus:border-[#9E7B4F] focus:ring-2 focus:ring-[#9E7B4F]/20 text-slate-800 bg-white/95 backdrop-blur-sm text-lg text-center transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] cursor-pointer"
-                          value={formData.guests} 
-                          onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                        >
-                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                            <option key={num} value={num}>
-                              {num} {lang === 'tr' ? 'Kişi' : (lang === 'nl' ? 'Personen' : (num === 1 ? 'Guest' : 'Guests'))}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    )}
-
-                    <div className="pt-2 flex justify-center">
-                      <button 
-                        type="submit" 
-                        className="w-1/2 min-w-[160px] bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white text-xl font-bold tracking-wider py-3.5 px-6 rounded-2xl border-[2.5px] border-[#FDFBF7]/60 shadow-[0_8px_20px_-4px_rgba(157,123,79,0.4)] transition-all duration-300 transform hover:-translate-y-1"
-                      >
-                        {t[lang].submitBtn}
-                      </button>
-                    </div>
-
-                    {status && (
-                      <p className="text-center text-lg font-bold text-slate-700 mt-2 italic">{status}</p>
-                    )}
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* 4. KISIM: İRTİBAT & DÜZELTME POP-UP */}
-        {isContactOpen && (
-          <div className="fixed inset-0 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity">
-            
-            <div className="relative w-full max-w-sm">
-              <button
-                onClick={() => setIsContactOpen(false)}
-                className="absolute -top-4 -right-4 z-50 w-11 h-11 flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] text-white hover:from-[#B0936C] hover:to-[#89683F] font-bold text-lg border-2 border-[#FDFBF7] shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all transform hover:scale-110"
-              >
-                ✕
-              </button>
-
-              <div className="w-full relative flex flex-col overflow-hidden animate-rose-bloom elegant-font bg-[#FDFBF7] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-[5px] border-[#C5A880] rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl p-8 pt-10">
-                
-                <div className="absolute inset-0 z-30 pointer-events-none overflow-hidden rounded-tl-[3rem] rounded-br-[3rem]">
-                  <div className="absolute -inset-full top-0 block w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-sparkle" />
-                </div>
-
-                <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                  <img 
-                    src="https://www.svgrepo.com/show/308892/rose-flower-nature-floral.svg" 
-                    alt="Rose Background" 
-                    className="w-full h-auto opacity-[0.04] rotate-12 scale-125 mix-blend-multiply"
-                  />
-                </div>
-
-                <div className="relative z-10 flex flex-col w-full text-center space-y-6">
-                  <h3 className="text-2xl font-bold text-slate-800 italic pb-3 border-b border-[#C5A880]/30">
-                    {t[lang].contactTitle}
-                  </h3>
-                  <p className="text-lg text-slate-700 italic leading-relaxed">
-                    {t[lang].contactDesc}
-                  </p>
-                  <div className="pt-2 flex justify-center">
-                    <a 
-                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${t[lang].whatsappMsg}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-full bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white text-lg font-bold tracking-wider py-3.5 px-6 rounded-2xl border-[2.5px] border-[#FDFBF7]/60 shadow-[0_8px_20px_-4px_rgba(157,123,79,0.4)] transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      {t[lang].whatsappBtn}
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        )}
-
       </main>
+
+      {/* LCV MODAL (RSVP FORMU) */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity">
+          <div className="bg-slate-800 border border-[#C5A880]/30 rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl relative">
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="absolute top-4 right-5 text-slate-400 hover:text-white text-xl transition-colors"
+            >✕</button>
+            
+            <h2 className="elegant-font text-3xl text-[#C5A880] mb-6 text-center tracking-wide">
+              {t[lang].formTitle}
+            </h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <input 
+                  required 
+                  type="text" 
+                  placeholder={t[lang].namePlaceholder} 
+                  className="w-full p-3.5 bg-slate-900/50 border border-slate-600 rounded-lg text-white focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] outline-none transition-all placeholder:text-slate-500"
+                  value={formData.name}
+                  onChange={e => setFormData({...formData, name: e.target.value})}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-slate-300 mb-2 text-sm">{t[lang].attendanceLabel}</label>
+                <select 
+                  className="w-full p-3.5 bg-slate-900/50 border border-slate-600 rounded-lg text-white outline-none focus:border-[#C5A880] transition-all"
+                  value={formData.attending}
+                  onChange={e => setFormData({...formData, attending: e.target.value})}
+                >
+                  <option value={t[lang].attendingYes}>{t[lang].attendingYes}</option>
+                  <option value={t[lang].attendingNo}>{t[lang].attendingNo}</option>
+                </select>
+              </div>
+
+              {isAttending && (
+                <div>
+                  <label className="block text-slate-300 mb-2 text-sm">{t[lang].guestCountLabel}</label>
+                  <select 
+                    className="w-full p-3.5 bg-slate-900/50 border border-slate-600 rounded-lg text-white outline-none focus:border-[#C5A880] transition-all"
+                    value={formData.guests}
+                    onChange={e => setFormData({...formData, guests: e.target.value})}
+                  >
+                    {[1, 2, 3, 4, 5, 6].map(n => <option key={n} value={n}>{n}</option>)}
+                  </select>
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                disabled={!!status}
+                className="w-full py-3.5 mt-4 bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white font-bold tracking-widest uppercase rounded-lg shadow-[0_4px_15px_rgba(157,123,79,0.3)] disabled:opacity-70 transition-all"
+              >
+                {status || t[lang].submitBtn}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* İLETİŞİM MODAL */}
+      {isContactOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity">
+          <div className="bg-slate-800 border border-[#C5A880]/30 rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl relative text-center">
+            <button 
+              onClick={() => setIsContactOpen(false)} 
+              className="absolute top-4 right-5 text-slate-400 hover:text-white text-xl transition-colors"
+            >✕</button>
+            
+            <h2 className="elegant-font text-3xl text-[#C5A880] mb-4 tracking-wide">
+              {t[lang].contactTitle}
+            </h2>
+            
+            <p className="text-slate-300 mb-8 leading-relaxed">
+              {t[lang].contactDesc}
+            </p>
+            
+            <a 
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${t[lang].whatsappMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold tracking-wide rounded-lg shadow-lg transition-all"
+            >
+              <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.12.553 4.148 1.603 5.955L.252 23.364l5.525-1.448A11.97 11.97 0 0012.031 24c6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 21.996c-1.785 0-3.535-.48-5.068-1.39l-.363-.217-3.766.987.997-3.67-.238-.378A9.976 9.976 0 012.003 12.03c0-5.533 4.502-10.035 10.028-10.035 5.534 0 10.035 4.502 10.035 10.035 0 5.533-4.501 10.035-10.035 10.035zm5.502-7.535c-.302-.151-1.785-.882-2.062-.983-.277-.101-.48-.151-.682.151-.202.302-.782.983-.958 1.184-.176.201-.353.226-.655.075-2.022-.983-3.32-2.128-4.305-3.82-.126-.226-.013-.353.138-.504.138-.138.302-.352.453-.528.151-.176.202-.302.302-.504.101-.201.05-.377-.025-.528-.076-.151-.682-1.645-.933-2.253-.245-.595-.494-.515-.682-.524-.176-.009-.378-.009-.58-.009-.202 0-.529.076-.806.378-.277.302-1.058 1.033-1.058 2.518 0 1.485 1.083 2.92 1.234 3.12.151.202 2.128 3.245 5.157 4.555.719.31 1.28.495 1.718.634.721.229 1.378.197 1.895.12.58-.087 1.785-.73 2.037-1.435.252-.705.252-1.31.176-1.435-.075-.126-.277-.202-.579-.353z"/>
+              </svg>
+              {t[lang].whatsappBtn}
+            </a>
+          </div>
+        </div>
+      )}
     </>
   );
 }
