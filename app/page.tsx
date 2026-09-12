@@ -369,24 +369,28 @@ export default function Home() {
             </div>
           </div>
         )}
-<div className="w-full max-w-md mt-8 flex flex-col items-center">
-  <div className="inline-flex items-center gap-3 bg-slate-800/50 border border-slate-700/50 p-1.5 rounded-full backdrop-blur-sm">
-    <div className="pl-4 pr-2 py-1 flex items-center gap-2 border-r border-slate-700">
-      <svg className="w-4 h-4 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      </svg>
-      <span className="text-slate-300 text-sm font-medium tracking-wide">Rhoneweg 12-14, Amsterdam</span>
+<div className="w-full max-w-md mt-8 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative h-32 group">
+  {/* Harita Arka Planı (CSS ile karartılmış iframe veya görsel) */}
+  <div className="absolute inset-0 bg-slate-800 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+  
+  {/* Radar Ping */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <span className="relative flex h-4 w-4">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A880] opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-4 w-4 bg-[#C5A880] shadow-[0_0_10px_#C5A880]"></span>
+    </span>
+  </div>
+
+  {/* Alt Bilgi Paneli */}
+  <div className="absolute bottom-0 w-full bg-slate-900/90 backdrop-blur-md border-t border-white/5 p-3 flex justify-between items-center translate-y-1 group-hover:translate-y-0 transition-transform">
+    <div>
+      <p className="text-[10px] text-slate-400 font-mono tracking-widest">NAV // ACTIVE</p>
+      <p className="text-slate-200 text-sm font-medium">Rhoneweg 12-14, Amsterdam</p>
     </div>
-    <div className="flex gap-1 pr-1">
-      {/* Kopyala İkonu */}
-      <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-full transition-colors" title="Adresi Kopyala">
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-      </button>
-      {/* Haritaya Git İkonu */}
-      <a href="..." target="_blank" className="p-2 bg-[#C5A880] text-slate-900 hover:scale-105 rounded-full transition-transform shadow-lg" title="Haritada Aç">
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-      </a>
-    </div>
+    <a href="..." target="_blank" className="bg-transparent border border-[#C5A880] text-[#C5A880] hover:bg-[#C5A880] hover:text-slate-900 text-xs px-3 py-1.5 rounded transition-colors flex items-center gap-2">
+      <span>GİT</span>
+      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+    </a>
   </div>
 </div>
         {/* 4. KISIM: İRTİBAT & DÜZELTME POP-UP */}
