@@ -144,18 +144,6 @@ export default function Home() {
           animation: pointX 1.33s infinite ease-in-out; 
         }
 
-        @keyframes roseBloom {
-          0% { opacity: 0; transform: scale(0.85) rotate(-2deg); }
-          100% { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-        .animate-rose-bloom { animation: roseBloom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        @keyframes sparkleSweep {
-          0% { transform: translateX(-100%) rotate(25deg); }
-          100% { transform: translateX(200%) rotate(25deg); }
-        }
-        .animate-sparkle { animation: sparkleSweep 1.2s ease-in-out 0.3s forwards; }
-
         @keyframes softGlow {
           0%, 100% { 
             background-color: rgba(212, 175, 55, 0.15); 
@@ -193,7 +181,7 @@ export default function Home() {
 
       <main className="min-h-screen w-full bg-slate-900 flex flex-col items-center justify-center p-4 py-12 relative overflow-x-hidden">
         
-        {/* ÜST KISIM: KUSURSUZ HİZALANMIŞ İÇ İÇE BUTON ALANI */}
+        {/* ÜST KISIM: AÇIKLAMA VE BUTON */}
         <div className="text-center elegant-font max-w-2xl px-4 mb-6 mt-16 sm:mt-4">
           <p className="text-slate-300 text-lg md:text-xl italic tracking-wide leading-[2.8] inline-block">
             {t[lang].noteStart}
@@ -201,7 +189,7 @@ export default function Home() {
             <button 
               onClick={() => setIsOpen(true)}
               title={lang === 'tr' ? "LCV Formunu Aç" : "Open RSVP Form"}
-              className="group relative inline-flex items-center justify-center align-middle mx-1.5 px-3 py-1 bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white font-bold rounded-lg border border-white/20 shadow-[0_2px_10px_rgba(157,123,79,0.3)] hover:shadow-[0_4px_15px_rgba(157,123,79,0.5)] transition-all duration-300 whitespace-nowrap not-italic text-sm md:text-base cursor-pointer"
+              className="group relative inline-flex items-center justify-center align-middle mx-1.5 px-3 py-1 bg-gradient-to-r from-[#C5A880] to-[#9E7B4F] hover:from-[#B0936C] hover:to-[#89683F] text-white font-bold rounded-lg border border-white/20 shadow-[0_2px_10px_rgba(157,123,79,0.3)] transition-all duration-300 whitespace-nowrap not-italic text-sm md:text-base cursor-pointer"
             >
               <span className="inline-flex items-center animate-point-x mr-1.5">
                 <svg viewBox="0 0 24 24" fill="gold" className="w-4 h-4 transform rotate-90 drop-shadow-sm">
@@ -215,7 +203,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 1. KISIM: DAVETİYE GÖRSELİ */}
+        {/* DAVETİYE GÖRSELİ */}
         <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-slate-800">
           <img
             key={lang} 
@@ -266,40 +254,37 @@ export default function Home() {
         </div>
 
         {/* ==================================================== */}
-        {/* YENİ EKLENEN KISIM: ADRES VE LOKASYON WIDGET'I */}
+        {/* YENİ VE DÜZELTİLMİŞ LOKASYON WIDGET'I                */}
         {/* ==================================================== */}
-        <div className="mt-12 w-full max-w-md flex flex-col items-center p-8 bg-slate-800/60 backdrop-blur-md rounded-2xl border border-[#C5A880]/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative overflow-hidden transition-all duration-500 hover:border-[#C5A880]/40 hover:bg-slate-800/80 group">
+        <div className="mt-8 w-full max-w-md flex flex-col items-center p-6 bg-slate-800 border border-[#C5A880]/30 rounded-xl shadow-lg relative">
           
-          {/* İnce dekoratif üst çizgi */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent opacity-60"></div>
-          
-          {/* İkon */}
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-900 border border-[#C5A880]/30 mb-4 shadow-inner group-hover:scale-110 transition-transform duration-500">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#C5A880]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {/* Harita İkonu */}
+          <div className="mb-3 text-[#C5A880]">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
           
-          {/* Başlık */}
-          <h3 className="elegant-font text-2xl text-[#C5A880] tracking-wide mb-3">
+          {/* Başlık ve Adres */}
+          <h3 className="elegant-font text-xl md:text-2xl text-[#C5A880] mb-2 text-center tracking-wide">
             {t[lang].locationTitle}
           </h3>
           
-          {/* Adres Metni */}
-          <p className="text-slate-300 text-center text-base leading-relaxed mb-6">
+          {/* break-words ve w-full ile taşma engellendi */}
+          <p className="text-slate-300 text-sm md:text-base text-center mb-6 w-full break-words px-2">
             {t[lang].address}
           </p>
 
-          {/* Aksiyon Butonu */}
+          {/* Aksiyon Butonu - Renk kontrastı düzeltildi, mobilde tam genişlik */}
           <a 
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Rhoneweg 12-14, 1043 AH Amsterdam")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center px-6 py-2.5 bg-transparent text-[#C5A880] text-sm font-medium tracking-widest uppercase border border-[#C5A880] rounded-full hover:bg-[#C5A880] hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(197,168,128,0.1)] hover:shadow-[0_0_20px_rgba(197,168,128,0.3)]"
+            className="w-full sm:w-auto flex items-center justify-center px-8 py-3 bg-[#C5A880] text-slate-900 text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-[#b0946c] transition-colors duration-300 shadow-md"
           >
-            <span className="mr-2">{t[lang].mapBtn}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span>{t[lang].mapBtn}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </a>
