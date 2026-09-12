@@ -1,21 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import Autocomplete from '@/components/google-map/autocomplete';
-
-export default YourAwesomeComponent() {
-  retun (
-    <Autocomplete
-      apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}
-      onPlaceSelect={handlePlaceSelect}
-      mapClassName="rounded-lg"
-      spinnerClassName="grid h-full w-full place-content-center"
-      className="relative h-[500px] w-full flex-grow rounded-lg bg-gray-50"
-      hideInput={true}
-    />
-  )
-}
-
 export default function Home() {
   const [lang, setLang] = useState<'tr' | 'en' | 'nl'>('tr');
   const [isOpen, setIsOpen] = useState(false);
